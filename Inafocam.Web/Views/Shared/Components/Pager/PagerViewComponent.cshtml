@@ -1,0 +1,96 @@
+﻿@model Andamios.Web.Helpers.Pager
+@*<ul class="pagination mt-5">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active waves-effect border-radius-5"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>*@
+
+@{
+    var parametros = new Dictionary<string, string>
+{
+        {"Filtro", Model.Filtro},
+        {"Categoria", Model.Categoria}
+    };
+}
+    <ul class="pagination mt-5">
+        @if (Model.CurrentPage > 1)
+        {
+            <li class="waves-effect">
+                <a asp-area="@ViewData["area"]" asp-controller="@ViewData["controller"]" asp-action="@ViewData["action"]" asp-route-page="1" asp-route-filtro="@Model.Filtro" asp-route-categoria="@Model.Categoria">
+                    <i class="material-icons">first_page</i>
+                </a>
+            </li>
+            <li class="waves-effect">
+                <a asp-area="@ViewData["area"]" asp-controller="@ViewData["controller"]" asp-action="@ViewData["action"]" asp-route-page="@(Model.CurrentPage - 1)" asp-route-filtro="@Model.Filtro" asp-route-categoria="@Model.Categoria">
+                    <i class="material-icons dp48">chevron_left</i>
+                </a>
+
+                @*<a href="~/Home/Index?page=@(Model.CurrentPage - 1)">Previous</a>*@
+            </li>
+
+            @for (var page = Model.StartPage; page <= Model.EndPage; page++)
+            {
+                <li class="@(page == Model.CurrentPage ? "active" : "") waves-effect border-radius-5">
+
+                    <a asp-area="@ViewData["area"]" asp-controller="@ViewData["controller"]" asp-action="@ViewData["action"]" asp-route-page="@(page)" asp-route-filtro="@Model.Filtro" asp-route-categoria="@Model.Categoria">@(page)</a>
+
+                    @*<a href="~/Home/Index?page=@page"></a>*@
+                </li>
+            }
+        }
+        else
+        {
+            <li class="waves-effect">
+                <a class="disabled" >
+                    <i class="material-icons grey-text">first_page</i>
+                </a>
+            </li>
+            <li class="waves-effect">
+                <a class="disabled">
+                    <i class="material-icons dp48 grey-text">chevron_left</i>
+                </a>
+
+                @*<a href="~/Home/Index?page=@(Model.CurrentPage - 1)">Previous</a>*@
+            </li>
+
+            <li class="disabled active ">
+
+                <a class="white-text" >1</a>
+
+                @*<a href="~/Home/Index?page=@page"></a>*@
+            </li>
+        }
+
+        @if (Model.CurrentPage < Model.TotalPages)
+        {
+            <li class="waves-effect">
+                <a asp-area="@ViewData["area"]" asp-controller="@ViewData["controller"]" asp-action="@ViewData["action"]" asp-route-page="@(Model.CurrentPage + 1)" asp-route-filtro="@Model.Filtro" asp-route-categoria="@Model.Categoria"><i class="material-icons">chevron_right</i></a>
+            </li>
+
+            <li class="waves-effect">
+                <a asp-area="@ViewData["area"]" asp-controller="@ViewData["controller"]" asp-action="@ViewData["action"]" asp-route-page="@(Model.TotalPages)" asp-route-filtro="@Model.Filtro" asp-route-categoria="@Model.Categoria"><i class="material-icons">last_page</i></a>
+
+            </li>
+        }
+        else
+        {
+            <li a class="waves-effect ">
+                <a class="disabled " >
+                    <i class="material-icons dp48 grey-text">chevron_right</i>
+                </a>
+            </li>
+
+            <li a class="waves-effect ">
+                <a class="disabled" >
+                    <i class="material-icons grey-text">last_page</i>
+                </a>
+
+            </li>
+           
+        }
+    </ul>
+

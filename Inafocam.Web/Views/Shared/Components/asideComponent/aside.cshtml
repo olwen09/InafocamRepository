@@ -1,0 +1,322 @@
+﻿
+@*@model Andamios.Web.Views.Shared.Components.asideComponent.AsideModel
+@{ 
+    Uri url = new Uri($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}");
+    var path = url.LocalPath;
+}
+
+
+
+<div class="sidebar-left sidebar-fixed">
+    <div class="sidebar">
+        <div class="sidebar-content">
+            @if (Model.Controller != Constante.Impresion && Model.Controller != Constante.Cxc)
+            {
+                <div class="sidebar-header">
+                    <div class="sidebar-details">
+                        <h5 class="m-0 sidebar-title">
+                            <i class="material-icons app-header-icon text-top">find_in_page</i> @ShareLocalizer[Model.ControllerText]
+                        </h5>
+                        <div class="mt-10 pt-2">
+                            <p class="m-0 subtitle font-weight-700">@ShareLocalizer["Total de número de"] @ShareLocalizer[Model.ControllerText]</p>
+                            <p class="m-0 text-muted">@(Model.Cantidad) @ShareLocalizer[Model.ControllerText]</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div style="margin-top: 100px"></div>
+            @if (Model.Controller == Constante.Facturacion)
+            {
+                <div class="mb-5">
+                    <span>Nuevo</span>
+
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light mb-3 mt-5"
+                       disabled
+                       asp-area="CuentasPorCobrar"
+                       asp-controller="Recibo"
+                       asp-action="CrearReciboRapido"
+                       asp-route-tipo="ALQUILER">
+                        <i class="material-icons right">add</i>
+                        @ShareLocalizer["Reporte"]
+                    </a>
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Contratos" asp-controller="Contrato" asp-action="InformacionCliente" asp-route-tipo="VENTA">
+                            <i class="material-icons right">add</i>
+                            Venta
+                        </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Clientes"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                        <a style="width: 180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Clientes" asp-controller="Cliente" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Lista de Clientes"]</a>
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Recibos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                        <a style="width: 180px" class="mb-5 waves-effect waves-light hoverable" asp-area="CuentasPorCobrar" asp-controller="Recibo" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Lista de recibos"]</a>
+                    </div>
+
+                </div>
+            }
+                        @if (Model.Controller == "Contrato")
+                        {
+        <div class="mb-5">
+            <br />
+            <span>@ShareLocalizer["Nuevo"]</span>
+            <br />
+            <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light mb-3 mt-5" asp-area="Contratos" asp-controller="Contrato" asp-action="InformacionCliente" asp-route-tipo="ALQUILER">
+                <i class="material-icons right">add</i>
+                @ShareLocalizer["Alquiler"]
+            </a>
+            <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Contratos" asp-controller="Contrato" asp-action="InformacionCliente" asp-route-tipo="VENTA">
+                <i class="material-icons right">add</i>
+                @ShareLocalizer["Venta"]
+            </a>
+        </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Despachos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Devolución"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i> @ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+            }
+                    @if (Model.Controller == "ConteoDespacho")
+                    {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Contratos" asp-controller="Contrato" asp-action="Index">
+                        <i class="material-icons right">launch</i>
+                        @ShareLocalizer["Contratos"]
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Despachos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conteo</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Devolución"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+                    </div>
+
+                </div>
+            }
+            @if (Model.Controller == "ConduceDespacho")
+            {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Contratos" asp-controller="Contrato" asp-action="Inicio">
+                        <i class="material-icons right">launch</i>
+                        @ShareLocalizer["Contratos"]
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Despachos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Devolución"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+            }
+            @if (Model.Controller == "ConteoDevolucion")
+            {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Clientes" asp-controller="Proyecto" asp-action="Index">
+                        <i class="material-icons right">add</i>
+                        @ShareLocalizer["Nuevo"]
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Devolución"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conteo</a>
+                        <a style="width: 180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i> @ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Despachos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+            }
+            @if (Model.Controller == "ConduceDevolucion")
+            {
+                <div class="mb-5">
+                        <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Clientes" asp-controller="Proyecto" asp-action="Index">
+                            <i class="material-icons right">Add</i>
+                            Nuevo
+                        </a>
+                    </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Devolución"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                    <span>@ShareLocalizer["Despachos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conteo"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Conduce"]</a>
+
+                    </div>
+
+                </div>
+            }
+            @if (Model.Controller == "Cliente")
+            {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Clientes" asp-controller="Cliente" asp-action="Create">
+                        <i class="material-icons right">add</i>
+                        @ShareLocalizer["Nuevo"]
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Proyectos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Clientes" asp-controller="Proyecto" asp-action="Inicio" asp-route-url="@path"><i class="material-icons right">launch</i>@ShareLocalizer["Proyectos"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                        <span>Despachos</span>
+                        <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                            <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conteo</a>
+                            <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                        </div>
+
+                    </div>
+            }
+            @if (Model.Controller == "Proyecto")
+            {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Clientes" asp-controller="Proyecto" asp-action="Crear">
+                        <i class="material-icons right">add</i>
+                        @ShareLocalizer["Nuevo"]
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span> @ShareLocalizer["Clientes"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                        <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Clientes" asp-controller="Cliente" asp-action="Index"><i class="material-icons right">launch</i>@ShareLocalizer["Cliente"]</a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                        <span>Despachos</span>
+                        <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width:200px">
+                            <a style="width:180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conteo</a>
+                            <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                        </div>
+
+                    </div>
+            }
+            @if (Model.Controller == "Impresion")
+            {
+                <div class="mb-5">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="ConduceDespachoPrint" asp-route-id="@Model.Id">
+                        <i class="material-icons right">printer</i>
+                       @ShareLocalizer["Imprimir"]
+                    </a>
+                </div>
+
+            }
+            @if (Model.Controller == Constante.Cxc)
+            {
+                <div class="mb-10">
+                    <h5 class="m-0 sidebar-title">
+                        <i class="material-icons app-header-icon text-top">find_in_page</i> @ShareLocalizer[Model.ControllerText]
+                    </h5>
+                </div>
+
+
+                <div class="mb-5 mt-10">
+                    <a style="width: 230px" class="btn teal mb-1 btn-small waves-effect waves-light tooltipped"
+                       data-position="top"
+                       data-tooltip="Nuevo recibo de pago"
+                       asp-area="CuentasPorCobrar"
+                       asp-controller="Recibo"
+                       asp-action="CrearRecibo">
+                        <i class="material-icons right">add</i>
+                        Recibo de pago
+                    </a>
+                </div>
+                <div class="col s12 m12 l12">
+                    <span>@ShareLocalizer["Recibos"]</span>
+                    <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                        <a style="width: 180px" class="mb-5 waves-effect waves-light hoverable"
+                           asp-area="CuentasPorCobrar"
+                           asp-controller="Recibo"
+                           asp-action="Index">
+                            <i class="material-icons right">launch</i>
+                           @ShareLocalizer["Lista"]
+                        </a>
+                        <a style="width:180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDespacho" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                    </div>
+
+                </div>
+
+                <div class="col s12 m12 l12 mt-5">
+                        <span>Devolución</span>
+                        <div class="m-5" style="padding: 3%; border: dashed 1px #adadad; width: 200px">
+                            <a style="width: 180px" class="mb-5 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConteoDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conteo</a>
+                            <a style="width: 180px" class="mb-1 waves-effect waves-light hoverable" asp-area="Contratos" asp-controller="ConduceDevolucion" asp-action="Index"><i class="material-icons right">launch</i> Conduce</a>
+
+                        </div>
+
+                    </div>
+            }
+        </div>
+    </div>
+</div>*@
+

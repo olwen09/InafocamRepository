@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Selec2 dropdown</Title>
+      <Author>Vickry</Author>
+      <Description>Crea el cuerpo html de un dropdown con select2</Description>
+      <Shortcut>sel2</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>propiedad</ID>
+          <ToolTip>Reemplazar con la propiedad del modelo en asp-for=""</ToolTip>
+          <Default>propiedadId</Default>
+        </Literal>
+        <Literal>
+          <ID>lista</ID>
+          <ToolTip>Reemplazar con la lista</ToolTip>
+          <Default>ViewBag.ListaId</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="">
+        <![CDATA[
+          <div class="input-field col s12 m6 l4">
+                        <div class="row">
+                            <label for="select2User" class="col s12">Nombre del vendedor</label>
+                        </div>
+                        <select asp-for=$propiedad$ id="ProVendedorId" class="form-control js-example-basic-single" style="width: 100%" asp-items=$lista$>
+                        </select>
+                    </div>
+          
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

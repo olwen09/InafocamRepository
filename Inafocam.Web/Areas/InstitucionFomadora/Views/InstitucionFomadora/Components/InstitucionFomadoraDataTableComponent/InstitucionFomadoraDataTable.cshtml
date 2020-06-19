@@ -1,0 +1,74 @@
+﻿@using Inafocam.core.Modelos
+
+<table id="page-length-option" class="display">
+
+    @*<label>Buscar:<input type="search" class="" placeholder="" aria-controls="page-length-option" id="column3_search"></label>
+        @*<div class="col s12 m3 l3" style="margin:0px;"></div>
+        <div class="col s12 m3 l3" style="margin:0px;"></div>
+        <div class="col s12 m2 l5" style="margin:0px;">
+
+
+        </div>*@
+    @*<div class="row">*@
+    @*<div class="col s12" style="margin:0px; padding:0px;">
+            This is an inline input field:
+            <div class="input-field inline">
+                <input id="email_inline" type="email" class="validate">
+                <label for="email_inline">Email</label>
+                <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+            </div>
+        </div>*@
+    @*</div>*@
+    <thead>
+        <tr>
+          
+            <th>Id Universidad</th>
+            <th>Universidad</th>
+            <th>Siglas</th>
+            <th>Campus o Recinto</th>
+            <th>Estado</th>
+            <th>Accines</th>
+              
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (University item in Model)
+        {
+        <tr>
+            <td>@item.UniversityId</td>
+            <td>@item.UniversityName</td>
+            <td>@item.UniversityAcronym</td>
+            <td>@item.UniversityCampus</td>
+            <td>@item.Status.StatusName</td>
+            <td>
+                <a asp-area="InstitucionFomadora" asp-controller="InstitucionFomadora" asp-action="Editar" asp-route-id="@item.UniversityId">
+                    <i class="material-icons">edit</i>
+                </a>
+            </td>
+            
+        </tr>
+        }
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Id Universidad</th>
+            <th>Universidad</th>
+            <th>Siglas</th>
+            <th>Campus o Recinto</th>
+            <th>Estado</th>
+            <th>Accines</th>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal mt-4" id="formulariopassword"></div>
+
+<div class="row ">
+    <div class="col s5 center ml-10 mt-5 modal " id="formularioestado">
+
+    </div>
+</div>

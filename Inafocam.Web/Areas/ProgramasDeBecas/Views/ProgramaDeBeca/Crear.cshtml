@@ -1,0 +1,334 @@
+﻿@using Andamios.Web.Helpers
+@using Microsoft.AspNetCore.Razor.Language.CodeGeneration
+@model Inafocam.Web.Areas.ProgramasDeBecas.Modelos.ScholarshipProgramModel
+
+@{ ViewData["Title"] = "Create";
+
+    MensajesViewModel mensaje = new MensajesViewModel();
+
+    if (TempData["mensaje"] != null)
+    {
+
+        mensaje = TempData.Get<MensajesViewModel>("mensaje");
+
+    } }
+
+@section Style
+{
+    <link href="~/app-assets/vendors/noUiSlider/nouislider.css" rel="stylesheet" />
+    <link href="~/app-assets/css/custom/custom.css" rel="stylesheet" />
+    <link href="~/lib/toastr.js/toastr.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+}
+
+
+@* BREADCRUMB *@
+@await Component.InvokeAsync("BreadcrumbComponent", new
+{
+    area = (string)ViewData["area"],
+    controlador = (string)ViewData["controlador"],
+    controller = (string)ViewData["controller"],
+    vista = (string)ViewData["vista"]
+})
+@* END BREADCRUMB *@
+
+
+
+<div class="row">
+    <form class="col s12 formValidate" method="post" asp-area="ProgramasDeBecas" asp-controller="ProgramaDeBeca" asp-action="GuardarPrograma">
+
+
+
+        @* Detalles del programa*@
+        <div>
+            <span asp-validation-sumary=""></span>
+        </div>
+        @*<div class="card"></div>*@
+
+
+
+        @* detalles del programa *@
+
+        <div class="card">
+            <div class="card-content">
+
+                <h4 class="card-title">Detalles del Programa</h4>
+
+                <div class="row ">
+
+
+                    <div class="input-field col s12 m6 l2">
+
+                        @*<i class="material-icons prefix">contacts</i>*@
+
+                        <input value="llll" id="codigo" type="text" class="validat" disabled style="font-weight: bold;">
+
+                        <label>Id Programa</label>
+
+
+                    </div>
+
+
+
+
+                    <div class="input-field col s12 m6 l3">
+                        <input asp-for="ScholarshipProgramName" id="NombrePrograma" type="text" class="validate">
+                        <label for="NombrePrograma">Nombre Programa</label>
+                        <span class="red-text validationDisplay"></span>
+                    </div>
+
+
+
+
+                    <div class="input-field col s12 m6 l3">
+                        <div class="row">
+                            <label for="select2User" class="col s12">Nivel</label>
+                        </div>
+                        <select asp-for="ScholarshipLevelId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Nivel">
+                        </select>
+
+
+                    </div>
+
+                    <div class="input-field col s12 m6 l3">
+                        <div class="row">
+                            <label for="select2User" class="col s12">Estado</label>
+                        </div>
+                        <select asp-for="StatusId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Status">
+                        </select>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="input-field col s12">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            @*<div class="input-field col s12">
+                    <button class="teal btn waves-effect waves-light" type="submit" onclick="onValidate(this.parent)">
+                        Guardar
+                        <i class="material-icons right">save</i>
+                    </button>
+                </div>*@
+        </div>
+
+        @*convocatorias del programa*@
+        <div class="card">
+            <div class="card-content">
+
+                <h4 class="card-title">Convocatorias Para Este Programa</h4>
+
+                <div class="row ">
+
+
+                    <div class="input-field col s12 m6 l4">
+                        <input asp-for="ScholarshipProgramUniversity.ScatProgramCode" id="codigodescat" type="text" class="validate">
+                        <label for="codigodescat">Codigo de SCAT</label>
+                        <span class="red-text validationDisplay"></span>
+                    </div>
+
+
+
+
+
+                    <div class="input-field col s12 m6 l4">
+                        <input asp-for="ScholarshipProgramUniversity.ContractNumber" id="nocontrato" type="text" class="validate">
+                        <label for="nocontrato">No. Contrato</label>
+                        <span class="red-text validationDisplay"></span>
+                    </div>
+
+                    <div class="input-field col s12 m6 l4">
+                        <div class="row">
+                            <label for="select2User" class="col s12">Universidad</label>
+                        </div>
+                        <select asp-for="ScholarshipProgramUniversity.UniversityId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.University">
+                        </select>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+
+                    <div class="s6 m6 l5">
+
+
+                        <div class="input-field col s12 m6 l2">
+                            <input asp-for="ScholarshipProgramUniversity.AnnouncementStartDate" type="text" class="datepicker" id="inicioConvocatoria">
+                            <label for="inicioConvocatoria">Inicio de Convocatoria</label>
+                        </div>
+
+                        <div class="input-field col s12 m6 l2">
+                            <input asp-for="ScholarshipProgramUniversity.AnnouncementEndDate" type="text" class="datepicker" id="finConvocatoria">
+                            <label for="finConvocatoria">Fecha de Termino</label>
+                        </div>
+                    </div>
+
+
+                    @*para dar espacio entre las fechas*@
+                    <div class="s6 m6 l1">
+
+                        <div class="input-field col s12 m6 l1">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="s6 m6 l5">
+
+                        <div class="input-field col s12 m6 l2">
+                            <input asp-for="ScholarshipProgramUniversity.StartDate" type="text" class="datepicker" id="inicioPrograma">
+                            <label for="inicioPrograma">Inicio de Programa</label>
+
+                        </div>
+
+                        <div class="input-field col s12 m6 l2">
+                            <input asp-for="ScholarshipProgramUniversity.EndDate" type="text" class="datepicker" id="finPrograma">
+                            <label for="finPrograma">Fecha de Termino</label>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <h5>Lista de Convocatorias Creadas</h5>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="border: solid 1px; border-color: #e0e0e0;"></th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">Universidad</th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">Cod. Scat</th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">No. Contrato</th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">Periodo de convocatoria</th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">Periodo del Programa</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (Model.ScholarshipProgramUniversityList == null)
+                        {
+                    <tr>
+                        @*<td style="border: solid 1px; border-color: #e0e0e0;" class="red-text center">x</td>
+                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.University?.UniversityName</td>
+                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ScatProgramCode</td>
+                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ContractNumber</td>
+                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.AnnouncementStartDate - @Model.ScholarshipProgramUniversity?.AnnouncementEndDate</td>
+                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.StartDate - @Model.ScholarshipProgramUniversity?.EndDate</td>*@
+                    </tr>}
+
+                        else {
+
+                        @foreach (var item in Model?.ScholarshipProgramUniversityList)
+                        {
+                            <tr>
+
+                                <input type="hidden" asp-for="ScholarshipProgramUniversityList" />
+
+                            </tr>
+
+                         <tr>
+                           <td style="border: solid 1px; border-color: #e0e0e0;" class="red-text center">x</td>
+                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.University.UniversityName</td>
+                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ScatProgramCode</td>
+                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ContractNumber</td>
+                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.AnnouncementStartDate - @item.AnnouncementEndDate</td>
+                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.StartDate - @item.EndDate</td>
+                          </tr>
+                                            
+                          }
+                        }
+
+                    </tbody>
+                    </table>
+
+                </div>
+                <div class="input-field col s12">
+
+                    <button class="teal btn waves-effect waves-light" type="submit">
+                        <i class="material-icons left">save</i>
+                        Guardar
+                    </button>
+
+
+
+                    <a class="red btn waves-effect waves-light">
+                        <i class="material-icons left">cancel</i>
+                        Anular
+                    </a>
+
+                    <a class="white btn waves-effect waves-light black-text">
+                        <i class="material-icons left">cleaning_services</i>
+                        Limpiar
+                    </a>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    @section Scripts
+{
+
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/app-assets/vendors/jquery-validation/jquery.validate.js"></script>
+        <script src="~/app-assets/vendors/jquery-validation/additional-methods.js"></script>
+        <script src="~/app-assets/vendors/jquery-cookies/jquery.cookies.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+        <!-- BEGIN VENDOR JS-->
+        <script src="~/app-assets/js/vendors.min.js" type="text/javascript"></script>
+        <!-- BEGIN VENDOR JS-->
+        <!-- BEGIN PAGE VENDOR JS-->
+        <!-- END PAGE VENDOR JS-->
+        <!-- BEGIN THEME JS-->
+        <script src="~/app-assets/js/plugins.js" type="text/javascript"></script>
+        <script src="~/app-assets/js/custom/custom-script.js" type="text/javascript"></script>
+        <script src="~/lib/toastr.js/toastr.min.js"></script>
+        <script src="~/app-assets/js/toastr.init.js" type="text/javascript"></script>
+        <script src="~/app-assets/vendors/formatter/jquery.formatter.min.js" type="text/javascript"></script>
+        @*<script src="~/app-assets/js/scripts/form-elements.js"></script>
+            <script src="~/app-assets/js/scripts/form-masks.js"></script>
+            @*<script src="~/app-assets/js/scripts/form-layouts.js" type="text/javascript"></script>*@
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+        <!-- END PAGE LEVEL JS-->
+        <script>
+        @*$('#descripcionTxtArea').val('@Model.Descripcion');
+        M.textareaAutoResize($('#textarea2'));*@
+
+
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2({
+                placeholder: "Select a state",
+            });
+        });
+
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var elems = document.querySelectorAll('.datepicker');
+        //    var instances = M.Datepicker.init(elems, options);
+        //});
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+
+        </script>
+    }

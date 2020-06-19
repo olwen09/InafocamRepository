@@ -1,0 +1,68 @@
+﻿@using Inafocam.core.Modelos
+@using System.Globalization;
+
+<table id="page-length-option" class="display">
+
+
+    <thead>
+        <tr>
+
+            <th>Convocatoria <br /> Id</th>
+            <th>Nivel</th>
+            <th>Programa</th>
+            <th>Universidad</th>
+            <th>Periodo de Convocatoria</th>
+            <th>Periodo de Progrma</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ScholarshipProgramUniversity item in Model)
+        {
+        <tr>
+            <td>@item.ScholarshipProgramUniversityId</td>
+            <td>@item.ScholarshipLevel.ScholarshipLevelName</td>
+            <td>@item.ScholarshipProgram.ScholarshipProgramName</td>
+            <td>@item.University.UniversityName</td>
+            <td>@item.AnnouncementStartDate?.ToString("D", CultureInfo.GetCultureInfo("es")) - @item.AnnouncementEndDate?.ToString("D", CultureInfo.GetCultureInfo("es"))</td>
+            <td>@item.StartDate?.ToString("D", CultureInfo.GetCultureInfo("es")) - @item.EndDate?.ToString("D", CultureInfo.GetCultureInfo("es"))</td>
+            <td>@item.Status.StatusName</td>
+            
+            <td>
+                <a asp-area="ConvocatoriaDeBecas" asp-controller="ConvocatoriaDeBeca" asp-action="Editar" asp-route-id="@item.ScholarshipProgramUniversityId">
+                    <i class="material-icons">edit</i>
+                </a>
+            </td>
+        </tr>
+        }
+       
+
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+
+            <th>Convocatoria <br /> Id</th>
+            <th>Nivel</th>
+            <th>Programa</th>
+            <th>Universidad</th>
+            <th>Periodo de Convocatoria</th>
+            <th>Periodo de Progrma</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal mt-4" id="formulariopassword"></div>
+
+<div class="row ">
+    <div class="col s5 center ml-10 mt-5 modal " id="formularioestado">
+
+    </div>
+</div>
