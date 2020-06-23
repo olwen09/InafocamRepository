@@ -26,15 +26,27 @@ namespace Inafocam.core.Repository
             return _context.ScholarshipProgram
             .Include(x => x.ScholarshipLevel)
             .Include(x => x.ScholarshipProgramUniversity)
-            .Include(x => x.Status).FirstOrDefault(x=> x.ScholarshipProgramId == id);
+            .Include(x => x.Status)
+            .FirstOrDefault(x=> x.ScholarshipProgramId == id);
         
         }
 
         public void GuardarScholarshipProgram(ScholarshipProgram model)
         {
+            if(model.ScholarshipProgramId != 0)
+            {
+                
+
+                _context.ScholarshipProgram.Update(model);
+            }
+            else
+            {
+                _context.Add(model);
+            }
+
             //_context.Add(model);
 
-            //_context.SaveChanges();
+            _context.SaveChanges();
         }
     }
 }

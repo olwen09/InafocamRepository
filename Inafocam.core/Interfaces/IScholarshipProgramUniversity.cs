@@ -9,5 +9,7 @@ namespace Inafocam.core.Interfaces
    public interface IScholarshipProgramUniversity
     {
         IQueryable<ScholarshipProgramUniversity> ScholarshipProgramUniversity { get; }
+
+        ScholarshipProgramUniversity GetById(int id);
     }
 }

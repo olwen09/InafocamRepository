@@ -27,5 +27,19 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgramUniversityAgent)
             .Include(x => x.ScholarshipProgramUniversityAgreement)
             .Include(x => x.ScholarshipProgramUniversitySubjectMatter);
+
+        public ScholarshipProgramUniversity GetById(int id)
+        {
+            return _context.ScholarshipProgramUniversity.Include(x => x.Coordinator)
+            .Include(x => x.ScholarshipLevel)
+            .Include(x => x.ScholarshipProgram)
+            .Include(x => x.Status)
+            .Include(x => x.Technical)
+            .Include(x => x.University)
+            .Include(x => x.ScholarshipProgramTracing)
+            .Include(x => x.ScholarshipProgramUniversityAgent)
+            .Include(x => x.ScholarshipProgramUniversityAgreement)
+            .Include(x => x.ScholarshipProgramUniversitySubjectMatter).FirstOrDefault(x=> x.ScholarshipProgramUniversityId == id);
+        }
     }
 }

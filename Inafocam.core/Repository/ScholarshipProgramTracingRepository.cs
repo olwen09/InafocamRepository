@@ -33,5 +33,10 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgramTracingQualitySystem)
             .Include(x => x.ScholarshipProgramTracingStudentPractice)
             .Include(x => x.ScholarshipProgramTracingStudentSupport);
+
+        public ScholarshipProgramTracing GetById(int id)
+        {
+            return ScholarshipProgramTracing.FirstOrDefault(x => x.ScholarshipProgramTracingId == id);
+        }
     }
 }

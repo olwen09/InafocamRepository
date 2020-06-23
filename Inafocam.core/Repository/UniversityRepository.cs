@@ -22,6 +22,29 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgramTracing)
             .Include(x => x.ScholarshipProgramUniversity)
             .Include(x => x.UserUniversity);
-            
+
+        public University GetById(int id)
+        {
+          return  Universities.FirstOrDefault(x => x.UniversityId == id);
+        }
+
+        public void Save(University data)
+        {
+            if(data.UniversityId != 0)
+            {
+
+
+                 _context.University.Update(data);
+
+
+            }
+
+            else
+            {
+                _context.Add(data);
+            }
+
+            _context.SaveChanges();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@using Inafocam.core.Modelos
 
 <table id="page-length-option" class="display">
 
@@ -13,21 +13,30 @@
             <th>Rango de Fechas</th>
             <th>Estado</th>
             <th>Nivel</th>
-
+            <th>Acciones</th>
 
         </tr>
     </thead>
     <tbody>
 
-        <tr>
-            <td>PROG-INST-000003</td>
-            <td>Desarrollo de Software</td>
-            <td>Instituto Tecnologico de Santo Domingo</td>
-            <td>SCAT-27</td>
-            <td>30/11/0001 - 30/11/0001</td>
-            <td>Inicial</td>
-            <td>Activo</td>
-        </tr>
+        @foreach (ScholarshipProgramUniversity item in Model)
+        {
+            <tr>
+                <td>@item.ScholarshipProgramUniversityId</td>
+                <td>@item.ScholarshipProgram.ScholarshipProgramName</td>
+                <td>@item.University.UniversityName</td>
+                <td>@item.ScatProgramCode</td>
+                <td>@item.StartDate - @item.EndDate</td>
+                <td>@item.ScholarshipProgram.ScholarshipLevel.ScholarshipLevelName</td>
+                <td>@item.Status.StatusName</td>
+                <td>
+                    <a class="tooltipped" data-position="top" data-tooltip="Editar" asp-area="AcuerdoProgramasdeBecas" asp-controller="AcuerdoProgramasdeBeca" asp-action="Editar" asp-route-id="@item.ScholarshipProgramUniversityId">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </td>
+            </tr>
+        }
+
 
 
 
@@ -42,6 +51,7 @@
             <th>Rango de Fechas</th>
             <th>Estado</th>
             <th>Nivel</th>
+            <th>Acciones</th>
 
         </tr>
     </tfoot>

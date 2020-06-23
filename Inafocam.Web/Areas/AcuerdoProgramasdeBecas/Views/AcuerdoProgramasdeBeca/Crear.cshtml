@@ -1,6 +1,6 @@
-﻿@*@using Andamios.Web.Helpers
+﻿@using Inafocam.Web.Helpers
     @using Microsoft.AspNetCore.Razor.Language.CodeGeneration
-    @model Andamios.Web.Areas.Clientes.Models.ClienteModel
+    @model Inafocam.Web.Areas.AcuerdoProgramasdeBecas.Models.AcuerdoProgramasdeBecaModel
 
     @{ ViewData["Title"] = "Create";
 
@@ -11,7 +11,7 @@
 
                         mensaje = TempData.Get<MensajesViewModel>("mensaje");
 
-                    } }*@
+                    } }
 
 @section Style
 {
@@ -62,8 +62,8 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="TRACING-00001" id="codigo" type="text" class="validat" disabled style=" font-weight: bold;">
-                        <label>Id Seguimiento</label>
+                        <input value="TRACING-0000" id="codigo" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <label>Programa ID</label>
 
 
                     </div>
@@ -72,7 +72,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="Desarrollo de Sofware" id="nombreprograma" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="ScholarshipProgram.ScholarshipProgramName" id="nombreprograma" type="text" class="validat" >
                         <label>Nombre Programa</label>
 
 
@@ -83,7 +83,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="Instituto Tecnologico de Santo Domingo" id="universidad" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="University.UniversityName"  id="universidad" type="text" class="validat" />
                         <label for="universidad">Universidad</label>
 
 
@@ -98,7 +98,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="Desarrollo de Sofware" id="codscat" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="ScatProgramCode" id="codscat" type="text" class="validat" >
                         <label for="codscat">Cod.Scat</label>
 
 
@@ -109,7 +109,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="Instituto Tecnologico de Santo Domingo" id="nocontrato" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="ContractNumber" id="nocontrato" type="text" class="validat" >
                         <label for="nocontrato">No. Contrato</label>
 
 
@@ -120,7 +120,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="YENFRY HERRERA FELIZ" id="cordinador" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="Coordinator.Contact.ContactName" id="cordinador" type="text" class="validat" >
                         <label for="cordinador">Cordinador</label>
 
 
@@ -139,7 +139,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="VICTOR DE LA ROSA VALDEZ" id="tecnico" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="Technical.Contact.ContactName" id="tecnico" type="text" class="validat" >
                         <label for="tecnico">Tecnico</label>
 
 
@@ -150,7 +150,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="Activo" id="estado" type="text" class="validat" disabled style=" font-weight: bold;">
+                        <input asp-for="Status.StatusName" id="estado" type="text" class="validat" >
                         <label for="estado">Estado</label>
 
 
@@ -160,12 +160,12 @@
 
 
                         <div class="input-field col s12 m6 l2">
-                            <input type="text" class="datepicker" id="inicioConvocatoria" disabled value="05/07/2019" style=" font-weight: bold;">
+                            <input asp-for="StartDate" type="text" class="datepicker" id="inicioConvocatoria" >
                             <label for="inicioConvocatoria">Fecha de Inicio</label>
                         </div>
 
                         <div class="input-field col s12 m6 l2">
-                            <input type="text" class="datepicker" id="finConvocatoria" disabled value="05/12/2019" style=" font-weight: bold;">
+                            <input asp-for="EndDate" type="text" class="datepicker" id="finConvocatoria">
                             <label for="finConvocatoria">Fecha de Termino</label>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
 
                     <div class="input-field col s12 m6 l7">
 
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <textarea  id="textarea1" class="materialize-textarea"></textarea>
                         <label for="textarea1">Acuerdo</label>
 
                     </div>
@@ -205,7 +205,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Tipo de Acuerdo</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select  class="form-control js-example-basic-single" style="width: 100%" asp-items="  ViewBag.AgreementTypes">
                         </select>
 
                     </div>

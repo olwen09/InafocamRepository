@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Andamios.Web.Helpers
+namespace Inafocam.Web.Helpers
 {
     public static class EnumExtension
     {

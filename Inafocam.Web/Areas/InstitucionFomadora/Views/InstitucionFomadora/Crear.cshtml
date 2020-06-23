@@ -33,9 +33,12 @@
 
 
 <div class="row">
-    <form class="col s12 formValidate" method="post">
+    <form class="col s12 formValidate" method="post" asp-area="InstitucionFomadora" asp-controller="InstitucionFomadora" asp-action="GuardarUniverity">
 
-
+        <input type="hidden" asp-for="UniversityId" />
+        <input type="hidden" asp-for="CommunicationId"/>
+        <input type="hidden" asp-for="AddressId" />
+        @*<input type="hidden" asp-for="Com" />*@
 
         @* Detalles del programa*@
         <div>
@@ -195,9 +198,9 @@
                 <div class="input-field col s12 m6 l3">
 
                     <div class="row">
-                        <label for="select2User" class="col s12">Pais</label>
+                        <label for="select2User" class="col s12">Provincia</label>
                     </div>
-                    <select class="form-control js-example-basic-single" style="width: 100%">
+                    <select asp-for="Address.ProvinceId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Province">
                     </select>
 
 
@@ -208,7 +211,7 @@
                     <div class="row">
                         <label for="select2User" class="col s12">Ciudad</label>
                     </div>
-                    <select class="form-control js-example-basic-single" style="width: 100%">
+                    <select asp-for="Address.CityId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.City">
                     </select>
 
 
@@ -224,7 +227,7 @@
 
                     @*<i class="material-icons prefix">contacts</i>*@
 
-                    <input id="Direccion1" type="text" class="validat">
+                    <input asp-for="Address.Address1" id="Direccion1" type="text" class="validat">
 
                     <label for="Direccion1">Dirección 1</label>
                 </div>
@@ -232,7 +235,7 @@
 
                 <div class="input-field col s12 m6 l6">
 
-                    <input id="Direccion2" type="text" class="validat">
+                    <input asp-for="Address.Address2" id="Direccion2" type="text" class="validat">
 
                     <label for="Direccion2">Dirección 2</label>
 
@@ -241,14 +244,16 @@
 
 
                 <div class="input-field col s12 m6 l6">
-                    <input id="Email" type="text" class="validat">
+
+                    @*<input asp-for="Communication.CommunicationEmail" id="Email" type="hidden" class="validat">*@
+                    <input asp-for="Communication.CommunicationEmail" id="Email" type="email" class="validat">
 
                     <label for="Email">Email</label>
 
                 </div>
 
                 <div class="input-field col s12 m6 l6">
-                    <input id="SitioWeb" type="text" class="validat">
+                    <input asp-for="Communication.CommunicationWebsite" id="SitioWeb" type="text" class="validat">
 
                     <label for="SitioWeb">Sitio Web</label>
 

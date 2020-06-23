@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Andamios.Web.Helpers
+namespace Inafocam.Web.Helpers
 {
     public static class ClaimsPrincipalExtensions
     {

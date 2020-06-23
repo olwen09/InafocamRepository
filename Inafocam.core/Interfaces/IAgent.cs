@@ -6,12 +6,8 @@ using System.Text;
 
 namespace Inafocam.core.Interfaces
 {
-  public interface IUniversity
+   public interface IAgent
     {
-        IQueryable<University> Universities { get; }
-
-        University GetById(int id);
-
-        void  Save(University data);
+        IQueryable<Agent> Agents { get; }
     }
 }

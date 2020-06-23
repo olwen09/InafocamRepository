@@ -11,7 +11,9 @@
 
         mensaje = TempData.Get<MensajesViewModel>("mensaje");
 
-    } }
+    }
+  
+    }
 
 @section Style
 {
@@ -37,7 +39,8 @@
 <div class="row">
     <form class="col s12 formValidate" method="post" asp-area="ProgramasDeBecas" asp-controller="ProgramaDeBeca" asp-action="GuardarPrograma">
 
-
+        <input type="hidden" asp-for="ScholarshipProgramId" />
+        <input type="hidden" asp-for="@Model.ScholarshipProgramUniversityList" />
 
         @* Detalles del programa*@
         <div>
@@ -61,7 +64,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="llll" id="codigo" type="text" class="validat" disabled style="font-weight: bold;">
+                        <input value="lll" id="codigo" type="text" class="validat" disabled style="font-weight: bold;">
 
                         <label>Id Programa</label>
 
@@ -114,11 +117,11 @@
 
             </div>
             @*<div class="input-field col s12">
-                    <button class="teal btn waves-effect waves-light" type="submit" onclick="onValidate(this.parent)">
-                        Guardar
-                        <i class="material-icons right">save</i>
-                    </button>
-                </div>*@
+                <button class="teal btn waves-effect waves-light" type="submit" onclick="onValidate(this.parent)">
+                    Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+            </div>*@
         </div>
 
         @*convocatorias del programa*@
@@ -209,75 +212,76 @@
                 <table>
                     <thead>
                         <tr>
-                            <th style="border: solid 1px; border-color: #e0e0e0;"></th>
                             <th style="border: solid 1px; border-color: #e0e0e0;">Universidad</th>
                             <th style="border: solid 1px; border-color: #e0e0e0;">Cod. Scat</th>
                             <th style="border: solid 1px; border-color: #e0e0e0;">No. Contrato</th>
                             <th style="border: solid 1px; border-color: #e0e0e0;">Periodo de convocatoria</th>
                             <th style="border: solid 1px; border-color: #e0e0e0;">Periodo del Programa</th>
+                            <th style="border: solid 1px; border-color: #e0e0e0;">Acciones</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @if (Model.ScholarshipProgramUniversityList == null)
                         {
-                    <tr>
-                        @*<td style="border: solid 1px; border-color: #e0e0e0;" class="red-text center">x</td>
-                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.University?.UniversityName</td>
-                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ScatProgramCode</td>
-                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ContractNumber</td>
-                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.AnnouncementStartDate - @Model.ScholarshipProgramUniversity?.AnnouncementEndDate</td>
-                        <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.StartDate - @Model.ScholarshipProgramUniversity?.EndDate</td>*@
-                    </tr>}
+            <tr>
+                @*<td style="border: solid 1px; border-color: #e0e0e0;" class="red-text center">x</td>
+                <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.University?.UniversityName</td>
+                <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ScatProgramCode</td>
+                <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.ContractNumber</td>
+                <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.AnnouncementStartDate - @Model.ScholarshipProgramUniversity?.AnnouncementEndDate</td>
+                <td style="border: solid 1px; border-color: #e0e0e0;">@Model.ScholarshipProgramUniversity?.StartDate - @Model.ScholarshipProgramUniversity?.EndDate</td>*@
+            </tr> }
 
-                        else {
-
-                        @foreach (var item in Model?.ScholarshipProgramUniversityList)
+                        else
                         {
-                            <tr>
 
-                                <input type="hidden" asp-for="ScholarshipProgramUniversityList" />
+            @foreach (var item in Model?.ScholarshipProgramUniversityList)
+            {
 
-                            </tr>
+    <tr>
+   
 
-                         <tr>
-                           <td style="border: solid 1px; border-color: #e0e0e0;" class="red-text center">x</td>
-                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.University.UniversityName</td>
-                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ScatProgramCode</td>
-                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ContractNumber</td>
-                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.AnnouncementStartDate - @item.AnnouncementEndDate</td>
-                           <td style="border: solid 1px; border-color: #e0e0e0;">@item?.StartDate - @item.EndDate</td>
-                          </tr>
-                                            
-                          }
-                        }
+        <td style="border: solid 1px; border-color: #e0e0e0;">@item?.University.UniversityName</td>
+        <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ScatProgramCode</td>
+        <td style="border: solid 1px; border-color: #e0e0e0;">@item?.ContractNumber</td>
+        <td style="border: solid 1px; border-color: #e0e0e0;">@item?.AnnouncementStartDate - @item.AnnouncementEndDate</td>
+        <td style="border: solid 1px; border-color: #e0e0e0;">@item?.StartDate - @item.EndDate</td>
+        <td style="border: solid 1px; border-color: #e0e0e0;" class="center-align">
+            <a class="red-text tooltipped" data-position="top" data-tooltip="Eliminar" href="#">
+                <i class="material-icons ">delete</i>
+            </a>
+        </td>
+
+    </tr>
+}}
 
                     </tbody>
-                    </table>
+                </table>
 
-                </div>
-                <div class="input-field col s12">
-
-                    <button class="teal btn waves-effect waves-light" type="submit">
-                        <i class="material-icons left">save</i>
-                        Guardar
-                    </button>
-
-
-
-                    <a class="red btn waves-effect waves-light">
-                        <i class="material-icons left">cancel</i>
-                        Anular
-                    </a>
-
-                    <a class="white btn waves-effect waves-light black-text">
-                        <i class="material-icons left">cleaning_services</i>
-                        Limpiar
-                    </a>
-
-                </div>
             </div>
-        </form>
+            <div class="input-field col s12">
+
+                <button class="teal btn waves-effect waves-light" type="submit">
+                    <i class="material-icons left">save</i>
+                    Guardar
+                </button>
+
+
+
+                <a class="red btn waves-effect waves-light">
+                    <i class="material-icons left">cancel</i>
+                    Anular
+                </a>
+
+                <a class="white btn waves-effect waves-light black-text">
+                    <i class="material-icons left">cleaning_services</i>
+                    Limpiar
+                </a>
+
+            </div>
+        </div>
+    </form>
     </div>
 
     @section Scripts

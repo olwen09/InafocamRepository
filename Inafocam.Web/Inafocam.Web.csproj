@@ -77,7 +77,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary2\Inafocam.core.csproj" />
+    <!--<ProjectReference Include="..\ClassLibrary2\Inafocam.core.csproj" />-->
     <ProjectReference Include="..\Inafocam.core\Inafocam.core.csproj" />
   </ItemGroup>
 

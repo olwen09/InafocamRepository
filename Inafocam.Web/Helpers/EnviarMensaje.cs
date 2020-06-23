@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Andamios.Web.Helpers;
 using Andamios.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Newtonsoft.Json;
 
-namespace Andamios.Web.Helpers
+namespace Inafocam.Web.Helpers
 {
     public static class EnviarMensaje
     {

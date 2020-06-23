@@ -1,6 +1,6 @@
-﻿@*@using Andamios.Web.Helpers
+﻿@using Andamios.Web.Helpers
     @using Microsoft.AspNetCore.Razor.Language.CodeGeneration
-    @model Andamios.Web.Areas.Clientes.Models.ClienteModel
+    @model Inafocam.Web.Areas.ProgramacionDeSeguimiento.Models.ScholarshipProgramTracingModel
 
     @{ ViewData["Title"] = "Create";
 
@@ -11,7 +11,7 @@
 
                         mensaje = TempData.Get<MensajesViewModel>("mensaje");
 
-                    } }*@
+                    } }
 
 @section Style
 {
@@ -75,7 +75,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Universidad</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select asp-for="UniversityId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.University">
                         </select>
 
 
@@ -87,7 +87,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Nombre de Programa</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select  class="form-control js-example-basic-single" style="width: 100%">
                         </select>
 
 
@@ -135,12 +135,12 @@
 
 
                         <div class="input-field col s12 m6 l2">
-                            <input type="text" class="datepicker" id="inicioConvocatoria">
+                            <input asp-for="StartDate" type="text" class="datepicker" id="inicioConvocatoria">
                             <label for="inicioConvocatoria">Fecha de Inicio</label>
                         </div>
 
                         <div class="input-field col s12 m6 l2">
-                            <input type="text" class="datepicker" id="finConvocatoria">
+                            <input asp-for="EndDate" type="text" class="datepicker" id="finConvocatoria">
                             <label for="finConvocatoria">Fecha de Termino</label>
                         </div>
                     </div>

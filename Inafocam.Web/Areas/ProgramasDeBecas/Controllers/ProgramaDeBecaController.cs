@@ -97,12 +97,28 @@ namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
                 StatusId = model.StatusId,
                 ScholarshipLevel = model.ScholarshipLevel,
                 Status = model.Status,
-                ScholarshipProgramUniversity = model.ScholarshipProgramUniversityList,
+                //ScholarshipProgramUniversity = model.ScholarshipProgramUniversityList,
             };
+            //var data = CopyPropierties.Convert<ScholarshipProgramModel, ScholarshipProgram>(model);
 
-            _scholarshipProgram.GuardarScholarshipProgram(scholarshipProgramModel);
+            try
+            {
+                _scholarshipProgram.GuardarScholarshipProgram(scholarshipProgramModel);
 
-            return View();
+            }
+
+            catch (Exception e)
+            {
+                ViewBag.Nivel = new SelectList(_scholarshipLevel.ScholarshipsLevel, "ScholarshipLevelId", "ScholarshipLevelName");
+                ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
+                ViewBag.University = new SelectList(_university.Universities, "UniversityId", "UniversityName");
+                return View("Crear", model);
+            }
+
+
+
+            var ScholarshipProgramList = _scholarshipProgram.GetAll.ToList();
+            return View("Index",ScholarshipProgramList);
         }
     }
 }

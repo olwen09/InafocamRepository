@@ -269,6 +269,10 @@ namespace Andamios.Web
             services.AddScoped<IScholarshipProgramTracing, ScholarshipProgramTracingRepository>();
             services.AddScoped<IAddressType, AddressTypeRepository>();
             services.AddScoped<ICountry, CountryRepository>();
+            services.AddScoped<IProvince, ProvinceRepository>();
+            services.AddScoped<ICity, CityRepository>();
+            services.AddScoped<IAgent, AgentRepository>();
+            services.AddScoped<IAgreementType, AgreementTypeRepository>();
 
 
             #endregion
