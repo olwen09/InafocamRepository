@@ -86,7 +86,7 @@ namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
         public IActionResult GuardarPrograma(ScholarshipProgramModel model)
         {
 
-            //CopyPropierties< ScholarshipProgramModel, ScholarshipProgram>
+            //var scholarshipProgramModel = CopyPropierties.Convert<ScholarshipProgramModel, ScholarshipProgram>(model);
             var scholarshipProgramModel = new ScholarshipProgram
             {
                 ScholarshipProgramId = model.ScholarshipProgramId,
@@ -97,6 +97,7 @@ namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
                 StatusId = model.StatusId,
                 ScholarshipLevel = model.ScholarshipLevel,
                 Status = model.Status,
+                //Status = model.Status,
                 //ScholarshipProgramUniversity = model.ScholarshipProgramUniversityList,
             };
             //var data = CopyPropierties.Convert<ScholarshipProgramModel, ScholarshipProgram>(model);

@@ -17,7 +17,7 @@ namespace Inafocam.core.Repository
             _context = context;
         }
 
-        public IQueryable<Country> Country => _context.Country
+        public IQueryable<Country> GetAll => _context.Country
             .Include(x => x.Status)
             .Include(x => x.City)
             .Include(x => x.Province);

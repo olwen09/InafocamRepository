@@ -22,6 +22,7 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgram)
             .Include(x => x.Status)
             .Include(x => x.Technical)
+            .Include(x => x.Technical.AgentType)
             .Include(x => x.University)
             .Include(x => x.ScholarshipProgramTracing)
             .Include(x => x.ScholarshipProgramUniversityAgent)
@@ -35,11 +36,29 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgram)
             .Include(x => x.Status)
             .Include(x => x.Technical)
+            .Include(x => x.Technical.Contact)
+            .Include(x => x.Coordinator)
+            .Include(x => x.Coordinator.Contact)
             .Include(x => x.University)
             .Include(x => x.ScholarshipProgramTracing)
             .Include(x => x.ScholarshipProgramUniversityAgent)
             .Include(x => x.ScholarshipProgramUniversityAgreement)
             .Include(x => x.ScholarshipProgramUniversitySubjectMatter).FirstOrDefault(x=> x.ScholarshipProgramUniversityId == id);
+        }
+
+        public void Save(ScholarshipProgramUniversity model)
+        {
+            if(model.ScholarshipProgramUniversityId != 0)
+            {
+                _context.Add(model);
+            
+            }
+            else
+            {
+                _context.ScholarshipProgramUniversity.Update(model);
+            }
+
+            _context.SaveChanges();
         }
     }
 }

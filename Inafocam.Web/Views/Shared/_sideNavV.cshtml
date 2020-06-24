@@ -207,8 +207,8 @@
                         <div class="collapsible-body">
                             <ul class="collapsible collapsible-sub" data-collapsible="accordion">
                                 <li>
-                                    <a class="collapsible-body" data-i18n="">
-                                        <span>Maestro</span>
+                                    <a class="collapsible-body" data-i18n="" asp-area="Profesores" asp-controller="Profesor" asp-action="Index">
+                                        <span>Maestros</span>
                                     </a>
                                 </li>
                                 <li>
@@ -217,13 +217,14 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="collapsible-body" data-i18n="">
+                                    <a asp-area="Representantes" asp-controller="Representante" asp-action="Index" class="collapsible-body" data-i18n="">
                                         <span>Representantes</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="collapsible-body" data-i18n="">
-                                        <span>Tipo de Representante</span>
+                                    
+                                    <a asp-area="Representantes" asp-controller="AgentType" asp-action="Index" class="collapsible-body" data-i18n="">
+                                        <span>Tipos de Representantes</span>
                                     </a>
                                 </li>
                                 <li>

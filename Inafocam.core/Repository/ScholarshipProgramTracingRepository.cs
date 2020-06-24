@@ -20,7 +20,9 @@ namespace Inafocam.core.Repository
 
         public IQueryable<ScholarshipProgramTracing> ScholarshipProgramTracing => _context.ScholarshipProgramTracing
             .Include(x => x.Coordinator)
+            .Include(x => x.Coordinator.Contact)
             .Include(x => x.ScholarshipProgramUniversity)
+            .Include(x => x.ScholarshipProgramUniversity.ScholarshipProgram)
             .Include(x => x.Status)
             .Include(x => x.Technical)
             .Include(x => x.University)

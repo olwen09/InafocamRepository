@@ -18,12 +18,15 @@ namespace Inafocam.Web.Areas.AcuerdoProgramasdeBecas.Controllers
     {
         private readonly IScholarshipProgramUniversity _scholarshipProgramUniversity;
         private readonly IAgreementType _agreementType;
+        private readonly IStatus _status;
         //private readonly IScholarshipProgramUniversity _scholarshipProgramUniversity;
 
-        public AcuerdoProgramasdeBecaController(IScholarshipProgramUniversity scholarshipProgramUniversity, IAgreementType agreementType)
+        public AcuerdoProgramasdeBecaController(IScholarshipProgramUniversity scholarshipProgramUniversity,
+            IAgreementType agreementType, IStatus status)
         {
             _scholarshipProgramUniversity = scholarshipProgramUniversity;
             _agreementType = agreementType;
+            _status = status;
         }
 
         public IActionResult Index()
@@ -39,6 +42,7 @@ namespace Inafocam.Web.Areas.AcuerdoProgramasdeBecas.Controllers
 
             //var prueba = _agreementType.GetAll.ToList();
             ViewBag.AgreementTypes = new SelectList(_agreementType.GetAll, "AgreementTypeId", "AgreementTypeName");
+            ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
             return View();
         }
 
@@ -49,7 +53,32 @@ namespace Inafocam.Web.Areas.AcuerdoProgramasdeBecas.Controllers
 
             var acuerdoProgramasdeBecaModel = CopyPropierties.Convert<ScholarshipProgramUniversity, AcuerdoProgramasdeBecaModel>(data);
             ViewBag.AgreementTypes = new SelectList(_agreementType.GetAll, "AgreementTypeId", "AgreementTypeName");
+            ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
+
             return View("Crear",acuerdoProgramasdeBecaModel);
+        }
+
+        public IActionResult Guardar(AcuerdoProgramasdeBecaModel model)
+        {
+
+
+            var scholarshipProgramUniversity = _scholarshipProgramUniversity.ScholarshipProgramUniversity.ToList();
+            try
+            {
+                var data = CopyPropierties.Convert<AcuerdoProgramasdeBecaModel, ScholarshipProgramUniversity>(model);
+                _scholarshipProgramUniversity.Save(data);
+            }
+
+            catch(Exception e)
+            {
+               
+
+                return View("Index",scholarshipProgramUniversity);
+            }
+
+          
+
+            return View("Index", scholarshipProgramUniversity);
         }
     }
 }

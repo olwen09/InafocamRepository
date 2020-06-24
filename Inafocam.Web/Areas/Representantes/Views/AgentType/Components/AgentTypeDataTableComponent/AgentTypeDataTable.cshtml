@@ -1,0 +1,59 @@
+﻿@using Inafocam.core.Modelos
+@using System.Globalization;
+
+<table id="page-length-option" class="display">
+
+
+    <thead>
+        <tr>
+
+            <th> ID</th>
+            <th>Nombre</th>
+            <th>Fecha de Creacion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AgentType item in Model)
+        {
+            <tr>
+                <td>@item.AgentTypeId</td>
+                <td>@item.AgentTypeName</td>
+                <td>@item.CreationDate?.ToString("D", CultureInfo.GetCultureInfo("es"))</td>
+                <td>@item.Status.StatusName</td>
+
+                <td>
+                    <a asp-area="Representantes" asp-controller="AgentType" asp-action="Editar" asp-route-id="@item.AgentTypeId" class="tooltipped" data-position="top" data-tooltip="Editar">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+
+            <th> ID</th>
+            <th>Nombre</th>
+            <th>Fecha de Creacion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal mt-4" id="formulariopassword"></div>
+
+<div class="row ">
+    <div class="col s5 center ml-10 mt-5 modal " id="formularioestado">
+
+    </div>
+</div>

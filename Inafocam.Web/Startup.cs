@@ -273,6 +273,15 @@ namespace Andamios.Web
             services.AddScoped<ICity, CityRepository>();
             services.AddScoped<IAgent, AgentRepository>();
             services.AddScoped<IAgreementType, AgreementTypeRepository>();
+            services.AddScoped<IAgentType, AgentTypeRepository>();
+            services.AddScoped<ITeacher, TeacherRepository>();
+            services.AddScoped<IContactType, ContactTypeRepository>();
+            services.AddScoped<IDocumentType, DocumentTypeRepository>();
+            services.AddScoped<IEducationType, EducationTypeRepository>();
+            services.AddScoped<ITeacherEducation, TeacherEducationRepository>();
+            services.AddScoped<ITeacherFileType, TeacherFileTypeRepository> ();
+            services.AddScoped<IMatirialStatus, MatirialStatusRepository> ();
+            services.AddScoped<INationality, NationalityRepository> ();
 
 
             #endregion

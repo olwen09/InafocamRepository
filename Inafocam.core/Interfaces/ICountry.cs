@@ -8,6 +8,6 @@ namespace Inafocam.core.Interfaces
 {
    public interface ICountry
     {
-        IQueryable<Country> Country { get; }
+        IQueryable<Country> GetAll { get; }
     }
 }

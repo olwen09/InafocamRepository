@@ -21,24 +21,32 @@ namespace Inafocam.Web.Areas.ProgramacionDeSeguimiento.Controllers
         private readonly IScholarshipProgramUniversity _scholarshipProgramUniversity;
         private readonly IScholarshipProgram _scholarshipProgram;
         private readonly IAgent  _agent;
+        private readonly IAgentType  _agentType;
+        private readonly IStatus _status;
 
         public ProgramacionDeSeguimientoController(IScholarshipProgramTracing scholarshipProgramTracing,
             IUniversity university,
             IScholarshipProgramUniversity scholarshipProgramUniversity,
             IAgent agent,
-            IScholarshipProgram scholarshipProgram)
+            IScholarshipProgram scholarshipProgram,
+            IAgentType agentType
+            , IStatus status)
         {
             _scholarshipProgramTracing = scholarshipProgramTracing;
             _university = university;
             _scholarshipProgramUniversity = scholarshipProgramUniversity;
             _agent = agent;
             _scholarshipProgram = scholarshipProgram;
+            _agentType = agentType;
+            _status = status;
         }
     
 
         public IActionResult Index()
         {
             var scholarshipProgramTracing = _scholarshipProgramTracing.ScholarshipProgramTracing;
+          
+
 
             return View(scholarshipProgramTracing);
         }
@@ -46,7 +54,12 @@ namespace Inafocam.Web.Areas.ProgramacionDeSeguimiento.Controllers
         public IActionResult Crear()
         {
             
+
             ViewBag.University = new SelectList(_university.Universities, "UniversityId", "UniversityName");
+            ViewBag.ScholarshipProgram = new SelectList(_scholarshipProgram.GetAll, "ScholarshipProgramId", "ScholarshipProgramName");
+            ViewBag.Coordinator = new SelectList(_agentType.GetCoordinators, "AgentTypeId", "AgentTypeName");
+            ViewBag.Technical = new SelectList(_agentType.GetTechnicals, "AgentTypeId", "AgentTypeName");
+            ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
             //ViewBag.ScholarshipProgram = new SelectList(_scholarshipProgram, "ScholarshipProgramId", "ScholarshipProgramName");
             //ViewBag.Agent = new SelectList(_agent.Agents, "AgentId", );
             //ViewBag.Agent = new SelectList(_agent.Agents, "", "UniversityName");

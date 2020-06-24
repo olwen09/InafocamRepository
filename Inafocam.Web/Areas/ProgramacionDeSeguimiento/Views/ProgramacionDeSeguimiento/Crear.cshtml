@@ -36,7 +36,7 @@
 
 <div class="row">
     <form class="col s12 formValidate" method="post">
-
+        <input asp-for="ScholarshipProgramTracingId" type="hidden" />
 
 
         @* Detalles del programa*@
@@ -87,7 +87,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Nombre de Programa</label>
                         </div>
-                        <select  class="form-control js-example-basic-single" style="width: 100%">
+                        <select class="form-control js-example-basic-single" style="width: 100%">
                         </select>
 
 
@@ -98,7 +98,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Cordinador</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select asp-for="CoordinatorId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Coordinator">
                         </select>
 
 
@@ -113,7 +113,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Tecnico</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select asp-for="TechnicalId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Technical">
                         </select>
 
 
@@ -125,7 +125,7 @@
                         <div class="row">
                             <label for="select2User" class="col s12">Estado</label>
                         </div>
-                        <select class="form-control js-example-basic-single" style="width: 100%">
+                        <select asp-for="StatusId" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Status">
                         </select>
 
 

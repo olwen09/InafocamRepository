@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Inafocam.core.Modelos.Teacher>
+
+@section Style
+{
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/data-tables.css">
+
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/select.dataTables.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+    @*<link href="~/lib/toastr.js/toastr.css" rel="stylesheet" />*@
+    @*<link href="~/lib/toastr.js/toastr.min.css" rel="stylesheet" />*@
+    <link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet" />
+
+}
+
+@* BREADCRUMB *@
+@await Component.InvokeAsync("BreadcrumbComponent", new
+{
+    area = (string)ViewData["area"],
+    controlador = (string)ViewData["controlador"],
+    controller = (string)ViewData["controller"],
+    vista = (string)ViewData["vista"]
+})
+@* END BREADCRUMB *@
+
+
+
+@* RAZOR *@
+<!-- Page Length Options -->
+<div class="section section-data-tables">
+    <div class="row">
+        <div class="col s12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+
+                        <div class="col s6 ">
+
+
+                            <a class="teal mb-1 btn-small waves-effect waves-light " data-position="top" asp-area="Profesores" asp-controller="Profesor" asp-action="Crear">
+                                <i class="material-icons">add</i>
+                                Nuevo
+                            </a>
+
+                            <a class=" red mb-1 btn-small waves-effect waves-light" data-position="top" href="#">
+                                <i class="material-icons">cancel</i>
+                                Anular
+                            </a>
+
+                            <a class=" mb-1 btn-small white black-text waves-effect waves-light" data-position="top" data-tooltip="Cambiar estado" href="#">
+                                <i class="material-icons">print</i>
+                                Imrimir
+                            </a>
+
+                        </div>
+                        @*<div class="offset-6 right ">
+
+                                <a class="grey mb-1 btn-small waves-effect waves-light tooltipped" data-position="left" data-tooltip="Lista de roles" >
+                                    <i class="material-icons">verified_user</i>
+                                   Roles
+                                </a>
+
+                            </div>*@
+
+                    </div>
+                    <div class="col s12">
+
+                        <div class="row">
+                            <div class="grid-example col s12" style="margin:0px;"><span class="flow-text"></span></div>
+                        </div>
+                        <br />
+                        @*<a class="mb-1 btn waves-effect waves-light teal darken-1" asp-area="Clientes" asp-controller="Cliente" asp-action="Create"><i class="material-icons">add</i> Agregar</a>*@
+
+                        <div class="row">
+                            <div class="col s12">
+                                @await Component.InvokeAsync("TeacherDataTableComponent")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@* END MODAL *@
+
+@* END RAZOR *@
+
+@section Scripts
+{
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/app-assets/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/app-assets/vendors/data-tables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script src="~/app-assets/vendors/data-tables/js/dataTables.select.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="~/app-assets/js/plugins.js" type="text/javascript"></script>
+    <script src="~/app-assets/js/custom/custom-script.js" type="text/javascript"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/app-assets/js/scripts/data-tables.js" type="text/javascript"></script>
+    <script src="~/app-assets/js/scripts/extra-components-sweetalert.js" type="text/javascript"></script>
+    <script src="~/lib/jquery-confirm/dist/jquery-confirm.min.js"></script>
+    @*<script src="~/lib/toastr.js/toastr.min.js"></script>
+        <script src="~/app-assets/js/toastr.init.js" type="text/javascript"></script>*@
+
+    <script src="/app-assets/js/scripts/advance-ui-modals.js"></script>
+}

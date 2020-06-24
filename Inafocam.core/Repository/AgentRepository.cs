@@ -20,15 +20,34 @@ namespace Inafocam.core.Repository
         public IQueryable<Agent> Agents => _context.Agent
             .Include(x => x.Contact)
             .Include(x => x.AgentType)
-            .Include(x => x.CreationUser)
-            .Include(x => x.Status)
-            .Include(x => x.UpgradeUser)
-            .Include(x => x.User)
-            .Include(x => x.ScholarshipProgramTracingCoordinator)
-            .Include(x => x.ScholarshipProgramTracingTechnical)
-            .Include(x => x.ScholarshipProgramUniversityAgent)
-            .Include(x => x.ScholarshipProgramUniversityCoordinator)
-            .Include(x => x.ScholarshipProgramUniversityTechnical);
-            
+            .Include(x => x.Status);
+        //.Include(x => x.Contact.ContactCommunicatio);
+        //.Include(x => x.Contact.ContactCommunication);
+        //.Include(x => x.CreationUser)
+        //.Include(x => x.UpgradeUser)
+        //.Include(x => x.User)
+        //.Include(x => x.ScholarshipProgramTracingCoordinator)
+        //.Include(x => x.ScholarshipProgramTracingTechnical)
+        //.Include(x => x.ScholarshipProgramUniversityAgent)
+        //.Include(x => x.ScholarshipProgramUniversityCoordinator)
+        //.Include(x => x.ScholarshipProgramUniversityTechnical);
+
+
+        public Agent GetById(int id)
+        {
+            return Agents.FirstOrDefault(x => x.AgentId == id);
+        }
+
+        public void Save(Agent model)
+        {
+            if(model.AgentId != 0)
+            {
+                _context.Agent.Update(model);
+            }
+            else
+            {
+                _context.Add(model);
+            }
+        }
     }
 }

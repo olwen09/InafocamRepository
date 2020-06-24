@@ -11,5 +11,7 @@ namespace Inafocam.core.Interfaces
         IQueryable<ScholarshipProgramUniversity> ScholarshipProgramUniversity { get; }
 
         ScholarshipProgramUniversity GetById(int id);
+
+        void Save(ScholarshipProgramUniversity model);
     }
 }

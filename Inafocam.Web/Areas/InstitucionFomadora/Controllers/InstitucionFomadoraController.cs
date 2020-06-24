@@ -55,7 +55,7 @@ namespace Inafocam.Web.Areas.InstitucionFomadora.Controllers
 
             ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
             ViewBag.AddressType = new SelectList(_addressType.addressTypes, "AddressTypeId", "AddressTypeName");
-            ViewBag.Country  = new SelectList(_country.Country, "CountryId", "CountryName");
+            ViewBag.Country  = new SelectList(_country.GetAll, "CountryId", "CountryName");
             ViewBag.Province  = new SelectList(_province.Provinces, "ProvinceId", "ProvinceName");
             ViewBag.City  = new SelectList(_city.Cities, "CityId", "CityName");
             return View();
@@ -71,7 +71,7 @@ namespace Inafocam.Web.Areas.InstitucionFomadora.Controllers
 
             ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
             ViewBag.AddressType = new SelectList(_addressType.addressTypes, "AddressTypeId", "AddressTypeName");
-            ViewBag.Country = new SelectList(_country.Country, "CountryId", "CountryName");
+            ViewBag.Country = new SelectList(_country.GetAll, "CountryId", "CountryName");
             ViewBag.Province = new SelectList(_province.Provinces, "ProvinceId", "ProvinceName");
             ViewBag.City = new SelectList(_city.Cities, "CityId", "CityName");
 

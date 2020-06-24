@@ -35,9 +35,9 @@
 
 
 <div class="row">
-    <form class="col s12 formValidate" method="post">
+    <form class="col s12 formValidate" method="post" asp-area="AcuerdoProgramasdeBecas" asp-controller="AcuerdoProgramasdeBeca" asp-action="Guardar">
 
-
+        <input  asp-for="ScholarshipProgramUniversityId" type="hidden"/>
 
         @* Detalles del programa*@
         <div>
@@ -72,7 +72,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="ScholarshipProgram.ScholarshipProgramName" id="nombreprograma" type="text" class="validat" >
+                        <input asp-for="ScholarshipProgram.ScholarshipProgramName" id="nombreprograma" type="text" class="validat" readonly>
                         <label>Nombre Programa</label>
 
 
@@ -83,7 +83,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="University.UniversityName"  id="universidad" type="text" class="validat" />
+                        <input asp-for="University.UniversityName"  id="universidad" type="text" class="validat" readonly />
                         <label for="universidad">Universidad</label>
 
 
@@ -98,7 +98,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="ScatProgramCode" id="codscat" type="text" class="validat" >
+                        <input asp-for="ScatProgramCode" id="codscat" type="text" class="validat" readonly >
                         <label for="codscat">Cod.Scat</label>
 
 
@@ -109,7 +109,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="ContractNumber" id="nocontrato" type="text" class="validat" >
+                        <input asp-for="ContractNumber" id="nocontrato" type="text" class="validat" readonly>
                         <label for="nocontrato">No. Contrato</label>
 
 
@@ -120,7 +120,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="Coordinator.Contact.ContactName" id="cordinador" type="text" class="validat" >
+                        <input asp-for="Coordinator.Contact.ContactName" id="cordinador" type="text" class="validat"  readonly>
                         <label for="cordinador">Cordinador</label>
 
 
@@ -139,7 +139,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="Technical.Contact.ContactName" id="tecnico" type="text" class="validat" >
+                        <input asp-for="Technical.Contact.ContactName" id="tecnico" type="text" class="validat"  readonly>
                         <label for="tecnico">Tecnico</label>
 
 
@@ -150,9 +150,14 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input asp-for="Status.StatusName" id="estado" type="text" class="validat" >
+                        <input asp-for="Status.StatusName" id="estado" type="text" class="validat" readonly>
+                       
                         <label for="estado">Estado</label>
-
+                        @*<div class="row">
+            <label for="select2User" class="col s12">Estado</label>
+        </div>
+        <select asp-for="StatusId" class="form-control js-example-basic-single" style="width: 100%" asp-items="  ViewBag.Status ">
+        </select>*@
 
                     </div>
 
@@ -160,12 +165,12 @@
 
 
                         <div class="input-field col s12 m6 l2">
-                            <input asp-for="StartDate" type="text" class="datepicker" id="inicioConvocatoria" >
+                            <input asp-for="StartDate" type="text" class="datepicker" id="inicioConvocatoria" disabled>
                             <label for="inicioConvocatoria">Fecha de Inicio</label>
                         </div>
 
                         <div class="input-field col s12 m6 l2">
-                            <input asp-for="EndDate" type="text" class="datepicker" id="finConvocatoria">
+                            <input asp-for="EndDate" type="text" class="datepicker" id="finConvocatoria" disabled>
                             <label for="finConvocatoria">Fecha de Termino</label>
                         </div>
                     </div>

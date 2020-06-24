@@ -39,7 +39,9 @@ namespace Inafocam.core.Modelos
         public virtual Status Status { get; set; }
         public virtual User UpgradeUser { get; set; }
         public virtual ICollection<Company> Company { get; set; }
+        public virtual ContactAddress ContactAddres { get; set; }
         public virtual ICollection<ContactAddress> ContactAddress { get; set; }
+        public virtual ContactCommunication ContactCommunicatio { get; set; }
         public virtual ICollection<ContactCommunication> ContactCommunication { get; set; }
         public virtual ICollection<Teacher> Teacher { get; set; }
         public virtual ICollection<User> User { get; set; }

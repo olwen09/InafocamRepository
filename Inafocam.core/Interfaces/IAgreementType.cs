@@ -9,5 +9,7 @@ namespace Inafocam.core.Interfaces
    public interface IAgreementType
     {
         IQueryable<AgreementType> GetAll { get; }
+
+       
     }
 }
