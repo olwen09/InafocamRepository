@@ -19,6 +19,8 @@ namespace Inafocam.core.Repository
 
         public IQueryable<Agent> Agents => _context.Agent
             .Include(x => x.Contact)
+            .Include(x => x.Contact.DocumentType)
+            .Include(x => x.Contact.ContactType)
             .Include(x => x.AgentType)
             .Include(x => x.Status);
         //.Include(x => x.Contact.ContactCommunicatio);
@@ -32,6 +34,9 @@ namespace Inafocam.core.Repository
         //.Include(x => x.ScholarshipProgramUniversityCoordinator)
         //.Include(x => x.ScholarshipProgramUniversityTechnical);
 
+        public IQueryable<Agent> GetCoordinators => Agents.Where(x => x.AgentId == 1);
+
+        public IQueryable<Agent> GetTechnicals => Agents.Where(x => x.AgentId == 2);
 
         public Agent GetById(int id)
         {

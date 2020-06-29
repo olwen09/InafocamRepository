@@ -16,7 +16,7 @@ namespace Andamios.Web.Areas.Usuarios.Components.ResetPasswordComponent
                 return View("ResetPassword");
             }
 
-        
+
 
             return View("ResetPassword", rpvm);
         }

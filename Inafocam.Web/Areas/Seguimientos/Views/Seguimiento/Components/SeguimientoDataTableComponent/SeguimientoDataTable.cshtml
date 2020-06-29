@@ -1,0 +1,62 @@
+﻿@using Inafocam.core.Modelos
+
+<table id="page-length-option" class="display">
+
+
+    <thead>
+        <tr>
+
+            <th>Numero de Seguimiento</th>
+            <th>Fecha de Creacion</th>
+            <th>Nombre de Programa cde Beca</th>
+            <th>Universidad</th>
+            <th>Tecnico</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ScholarshipProgramTracing item in Model)
+        {
+            <tr>
+                <td>@item.ScholarshipProgramTracingId</td>
+                <td>@item.CreationDate</td>
+                <td>@item.ScholarshipProgramUniversity.ScholarshipProgram.ScholarshipProgramName</td>
+                <td>@item.ScholarshipProgramUniversity.University.UniversityName</td>
+                <td>@item.Technical.Contact.ContactName @item.Technical.Contact.ContactLastname</td>
+                <td>@item.Status.StatusName</td>
+                <td class="blue-text">
+                    <a class="tooltipped" data-position="top" data-tooltip="Editar" asp-area="Seguimientos" asp-controller="Seguimiento" asp-action="Editar" asp-route-id="@item.ScholarshipProgramTracingId">
+                        <i class="material-icons">edit</i>
+
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Numero de Seguimiento</th>
+            <th>Fecha de Creacion</th>
+            <th>Nombre de Programa cde Beca</th>
+            <th>Universidad</th>
+            <th>Tecnico</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal mt-4" id="formulariopassword"></div>
+
+<div class="row ">
+    <div class="col s5 center ml-10 mt-5 modal " id="formularioestado">
+
+    </div>
+</div>

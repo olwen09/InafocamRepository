@@ -1,0 +1,357 @@
+﻿
+@*@using Andamios.Web.Helpers
+@model Andamios.Web.Areas.Usuarios.Models.PerfilUsuario*@
+
+@{
+    MensajesViewModel mensaje = new MensajesViewModel();
+
+    if (TempData["mensaje"] != null)
+    {
+        mensaje = TempData.Get<MensajesViewModel>("mensaje");
+
+    }
+    //var num = 1;
+    //var UsuarioId = Model.EditarUsuarioModel.Id;
+    //var userLoggedId = User.GetUserId();
+}
+
+
+@section Style
+{
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/data-tables.css">
+
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/select.dataTables.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+    @*<link href="~/lib/toastr.js/toastr.css" rel="stylesheet" />*@
+    @*<link href="~/lib/toastr.js/toastr.min.css" rel="stylesheet" />*@
+    <link href="~/lib/jquery-confirm/dist/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+
+}
+
+@* BREADCRUMB *@
+@await Component.InvokeAsync("BreadcrumbComponent", new { controlador = (string)ViewData["controlador"], vista = (string)ViewData["vista"] })
+
+@* END BREADCRUMB *@
+
+@{
+    //Model.EditarUsuarioModel.Email
+}
+
+@* RAZOR *@
+<!-- Page Length Options -->
+<div id="" class="row">
+    <div class="card bg-opacity-9">
+
+        <form class="register-form" asp-area="Usuarios" asp-controller="Usuario" asp-action="Editar" method="post">
+
+
+
+            @*   <input type="hidden" asp-for="@Model.EditarUsuarioModel.Email" />*@
+            @*@if (UsuarioId == userLoggedId)
+                {*@
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <div class="col s12 m9 l9 user-section-negative-margin ml-8">
+                            <div class="row">
+                                <div class="col s12 center-align center m-0">
+                                    <img class="responsive-img circle z-depth-5" width="120" src="../../../app-assets/images/user/12.jpg" alt="">
+                                    <br>
+                                    <span class="center">
+                                        <h5 class="teal-text lighten-2"> nombre y apellido  </h5>
+
+                                        @*@if (!String.IsNullOrEmpty(Model.EditarUsuarioModel.Role))
+                                        {*@
+                                            <h6 class="grey-text lighten-2">Role  </h6>
+
+                                        @*}
+                                        else
+                                        {*@
+                                            <h6 class="grey-text lighten-2">Rol no asignado</h6>
+
+                                        @*}*@
+
+                                    </span>
+                                </div>
+
+                                <div class="col s12 center-align center m-0">
+                                    <a class="btn modal-trigger  waves-effect waves-light border-round teal tooltipped" href="#contrasena" data-position="top" data-tooltip="Cambiar Contraseña">
+                                        <i class="material-icons">vpn_key</i>
+                                        Cambiar contraseña
+                                    </a>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col s12 center mt-2">
+
+                            </div>
+
+                            <div class="col s12 m4 l4 ">
+                                @*Este div esta creado para rellenar el lado de la derecha *@
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col m12 s6 l6">
+                            <div class="row margin">
+                                @*<div class="input-field col s9">
+                                        <i class="material-icons prefix pt-2">person_outline</i>
+                                        <input class="validate" id="username" type="text" asp-for="@Model.EditarUsuarioModel.UserName" />
+                                        <label for="username" class="center-align">Usuario</label>
+                                        <span asp-validation-for="@Model.EditarUsuarioModel.UserName" class="red-text"></span>
+                                    </div>*@
+                            </div>
+
+                            <div class="row margin">
+                                <div class="input-field col s9">
+                                    <i class="material-icons prefix pt-2">face</i>
+                                    <input class="validate" id="nombre"  >
+                                    <label for="username" class="center-align"> Nombre</label>
+                                    <span   class="red-text"></span>
+
+                                </div>
+                            </div>
+
+                            <div class="row margin">
+                                <div class="input-field col s9">
+                                    <i class="material-icons prefix pt-2">face</i>
+                                    <input class="validate" id="apellido" type="text"  >
+                                    <label for="username" class="center-align ">Apellido</label>
+                                    <span  class="red-text"></span>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col m12 s6 l6">
+                            <div class="row margin">
+                                <div class="input-field col s9">
+                                    <i class="material-icons prefix pt-2">mail_outline</i>
+                                    <input class="validate" id="email" type="text"  >
+                                    <label for="username" class="center-align">Email</label>
+                                    <span   class="red-text"></span>
+
+                                </div>
+                            </div>
+
+                            @*<input asp-for="EditarUsuarioModel.Role" type="hidden" />*@
+
+                            <div class="row margin">
+                                <div class="input-field col s9">
+                                    @*<div class="row">
+                                            <label for="select2User" class="col s12">   <i class="material-icons">verified_user</i>Roles</label>
+                                        </div>
+
+                                        <select asp-for="EditarUsuarioModel.Role" class="form-control js-example-basic-single" style="width: 100%" asp-items="ViewBag.Role">
+                                        </select>*@
+
+                                </div>
+                            </div>
+
+                            <div class="mt-2">
+
+                            </div>
+
+
+                            <div class="row margin">
+                                <div class="input-field col s9 mt-10">
+                                    @*       <button type="submit">Update</button>*@
+
+                                    <button type="submit" class="btn waves-effect waves-light border-round teal col s12 btn-small ">
+                                        <i class="material-icons dp48">save</i>
+                                       Guardar Cambios
+                                    </button>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    @*<div class="row">
+                            <div class="input-field col s12 m12 l12">
+                                <div class="input-field col s3 m13 l3">
+
+                                    <button type="submit" class="btn waves-effect waves-light border-round teal col s12 btn-small ">
+                                        <i class="material-icons dp48">save</i>
+                                        Guardar Cambios
+                                    </button>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+
+
+
+
+        </form>
+
+
+
+        <div class="row margin">
+            <div class="input-field col s9">
+
+
+                <div class="modal mt-4" id="contrasena">
+
+
+                    @*@await Component.InvokeAsync("ResetPasswordComponent", Model.ResetPasswordViewModel);*@
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@* END MODAL *@
+
+@* END RAZOR *@
+
+@section Scripts
+{
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/app-assets/vendors/jquery-validation/jquery.validate.js"></script>
+    <script src="~/app-assets/vendors/jquery-validation/additional-methods.js"></script>
+    <script src="~/app-assets/vendors/jquery-cookies/jquery.cookies.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/app-assets/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="~/app-assets/js/plugins.js" type="text/javascript"></script>
+    <script src="~/app-assets/js/custom/custom-script.js" type="text/javascript"></script>
+    <script src="~/lib/toastr.js/toastr.min.js"></script>
+    <script src="~/app-assets/js/toastr.init.js" type="text/javascript"></script>
+    <script src="~/app-assets/vendors/formatter/jquery.formatter.min.js" type="text/javascript"></script>
+    @*<script src="~/app-assets/js/scripts/form-elements.js"></script>*@
+    <script src="~/app-assets/js/scripts/form-masks.js"></script>
+    @*<script src="~/app-assets/js/scripts/form-layouts.js" type="text/javascript"></script>*@
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+    <script>
+
+        $(document).ready(function() {
+            $('.tooltipped').tooltip();
+        });
+
+
+
+
+//        $('#userInformations').on("submit", function (event) {
+
+
+//            var Password = $("#Password").val();
+//            var ConfirmPassword = $("#ConfirmPassword").val();
+
+//            //var diferentes = $("#diferentes").val();
+//            //var contraseña = $("#contraseña").val()
+
+//            //if (diferentes != "") {
+//            //    diferentes = ""
+//            //}
+//            $('#diferentes').text('');
+//            $('#contraseña').text('');
+
+
+
+//            if (Password != ConfirmPassword) {
+//                $( "#diferentes" ).append( "<strong>Las Contraseñas no coinciden</strong>" );
+
+//                event.preventDefault();
+
+
+//            }
+
+
+//            if (Password.length < 6 || Password == '') {
+//                    $( "#contraseña" ).append( "<strong>La contraseñas debe ser de por lo menos 6 caracteres de longitud</strong>" );
+
+//                event.preventDefault();
+
+//            }
+
+//});
+
+
+
+        if ("@mensaje.Tipo".length > 0) {
+            $.confirm({
+                title: '@mensaje.Titulo',
+                content: '@mensaje.Texto',
+                type: '@mensaje.Tipo',
+                typeAnimated: true,
+                boxWidth: '500px',
+                autoClose: 'cerrar|5000',
+                useBootstrap: false,
+                buttons: {
+                    cerrar: {
+                        text: "Cerrar",
+                        action: function () { }
+                    }
+                },
+                onClose: function () {
+                    // before the modal is hidden.
+                    $.ajax({
+                        type: 'get',
+                        url: '/home/ClearTempData',
+                        success: function() {
+
+                        }
+                    });
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+            $('.modal').modal();
+
+            $('.js-example-basic-single').select2({
+                placeholder: "Select a state",
+            });
+
+            $('.phone').formatter({
+                'pattern': '({{999}}) {{999}}-{{9999}}',
+                'persistent': false
+            });
+
+            $(".validationDisplay").attr("style", "display:none");
+
+
+        });
+
+    </script>
+
+
+}

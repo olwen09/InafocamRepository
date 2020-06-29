@@ -45,6 +45,7 @@ namespace Inafocam.Web.Areas.Representantes.Controllers
         public IActionResult Index()
         {
             var agentData = _agent.Agents;
+            var prueba = _agent.GetCoordinators.ToList();
 
             return View(agentData);
         }

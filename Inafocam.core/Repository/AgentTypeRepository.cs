@@ -21,15 +21,15 @@ namespace Inafocam.core.Repository
             .Include(x => x.Status)
             .Include(x => x.Agent);
 
-        public IQueryable<AgentType> GetCoordinators => _context.AgentType
-            .Include(x => x.Status)
-            .Include(x => x.Agent)
-            .Where(x => x.AgentTypeId == 1);
+        //public IQueryable<AgentType> GetCoordinators => _context.AgentType
+        //    .Include(x => x.Status)
+        //    .Include(x => x.Agent)
+        //    .Where(x => x.AgentTypeId == 1);
 
-        public IQueryable<AgentType> GetTechnicals => _context.AgentType
-            .Include(x => x.Status)
-            .Include(x => x.Agent)
-            .Where(x => x.AgentTypeId == 2);
+        //public IQueryable<AgentType> GetTechnicals => _context.AgentType
+        //    .Include(x => x.Status)
+        //    .Include(x => x.Agent)
+        //    .Where(x => x.AgentTypeId == 2);
 
         public AgentType GetById(int id)
         {

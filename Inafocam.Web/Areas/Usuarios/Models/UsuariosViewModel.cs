@@ -77,7 +77,7 @@ namespace Andamios.Web.Areas.Usuarios.Models
     public class LoginViewModel
     {
         [Required(ErrorMessage = "Es necesario su nombre de usuario")]
-        public string UserName { get; set; }
+        public string UserLogin { get; set; }
 
         [Required(ErrorMessage = "Es necesaria la contraseña")]
         public string Password { get; set; }

@@ -19,7 +19,8 @@ namespace Inafocam.core.Repository
         public IQueryable<ScholarshipProgram> GetAll => _context.ScholarshipProgram
             .Include(x => x.ScholarshipLevel)
             .Include(x => x.Status)
-            .Include(x => x.ScholarshipProgramUniversity);
+        //.Include(x => x.ScholarshipProgramUniversity)
+        .Include(x => x.ScholarshipProgramUniversity);
 
         public ScholarshipProgram GetById(int? id)
         {

@@ -1,0 +1,62 @@
+﻿@using Inafocam.core.Modelos
+@using System.Globalization;
+
+<table id="page-length-option" class="display">
+
+
+    <thead>
+        <tr>
+
+            <th> ID</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (User item in Model)
+        {
+            <tr>
+                <td>@item.UserId</td>
+                <td>@item.UserLogin</td>
+                <td>@item.Contact?.ContactName</td>
+                <td>@item.Contact?.ContactLastname</td>
+                <td>@item.Status?.StatusName</td>
+
+                <td>
+                    <a asp-area="Usuarios" asp-controller="Usuario" asp-action="PerfilUsuarioAdmin" asp-route-id="@item.UserId" class="tooltipped" data-position="top" data-tooltip="Editar">
+                        <i class="material-icons">edit</i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+
+
+
+    </tbody>
+    <tfoot>
+        <tr>
+
+            <th> ID</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+
+        </tr>
+    </tfoot>
+</table>
+
+<div class="modal mt-4" id="formulariopassword"></div>
+
+<div class="row ">
+    <div class="col s5 center ml-10 mt-5 modal " id="formularioestado">
+
+    </div>
+</div>

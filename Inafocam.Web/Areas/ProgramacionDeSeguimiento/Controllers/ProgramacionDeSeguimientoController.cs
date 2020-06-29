@@ -45,20 +45,22 @@ namespace Inafocam.Web.Areas.ProgramacionDeSeguimiento.Controllers
         public IActionResult Index()
         {
             var scholarshipProgramTracing = _scholarshipProgramTracing.ScholarshipProgramTracing;
-          
 
+            var prueba = _agent.GetCoordinators.ToList();
+            var prueba2 = _agent.GetTechnicals.ToList();
+            var prueba3 = _agent.GetCoordinators.Where(x => x.AgentTypeId == 1).Select(x => x.Contact.ContactName);
 
             return View(scholarshipProgramTracing);
         }
         
         public IActionResult Crear()
         {
-            
 
+            var prueba3 = _agent.GetCoordinators.Where(x => x.AgentTypeId == 1).Select(x => x.Contact.ContactName).ToString();
             ViewBag.University = new SelectList(_university.Universities, "UniversityId", "UniversityName");
             ViewBag.ScholarshipProgram = new SelectList(_scholarshipProgram.GetAll, "ScholarshipProgramId", "ScholarshipProgramName");
-            ViewBag.Coordinator = new SelectList(_agentType.GetCoordinators, "AgentTypeId", "AgentTypeName");
-            ViewBag.Technical = new SelectList(_agentType.GetTechnicals, "AgentTypeId", "AgentTypeName");
+            //ViewBag.Coordinator = new SelectList(_agent.GetCoordinators, "AgentTypeId", );
+            //ViewBag.Technical = new SelectList(_agentType.GetTechnicals, "AgentTypeId", "AgentTypeName");
             ViewBag.Status = new SelectList(_status.Status, "StatusId", "StatusName");
             //ViewBag.ScholarshipProgram = new SelectList(_scholarshipProgram, "ScholarshipProgramId", "ScholarshipProgramName");
             //ViewBag.Agent = new SelectList(_agent.Agents, "AgentId", );

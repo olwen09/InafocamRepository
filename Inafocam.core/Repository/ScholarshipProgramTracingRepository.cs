@@ -24,7 +24,7 @@ namespace Inafocam.core.Repository
             .Include(x => x.ScholarshipProgramUniversity)
             .Include(x => x.ScholarshipProgramUniversity.ScholarshipProgram)
             .Include(x => x.Status)
-            .Include(x => x.Technical)
+            .Include(x => x.Technical.Contact)
             .Include(x => x.University)
             .Include(x => x.UpgradeUser)
             .Include(x => x.ScholarshipProgramTracingAgreement)

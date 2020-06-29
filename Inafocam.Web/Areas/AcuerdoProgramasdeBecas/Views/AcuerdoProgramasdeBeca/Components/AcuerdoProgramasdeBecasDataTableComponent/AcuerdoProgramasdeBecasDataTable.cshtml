@@ -28,7 +28,7 @@
                 <td>@item.ScatProgramCode</td>
                 <td>@item.StartDate - @item.EndDate</td>
                 <td>@item.ScholarshipProgram.ScholarshipLevel.ScholarshipLevelName</td>
-                <td>@item.Status.StatusName</td>
+                <td>@item.Status?.StatusName</td>
                 <td>
                     <a class="tooltipped" data-position="top" data-tooltip="Editar" asp-area="AcuerdoProgramasdeBecas" asp-controller="AcuerdoProgramasdeBeca" asp-action="Editar" asp-route-id="@item.ScholarshipProgramUniversityId">
                         <i class="material-icons">edit</i>

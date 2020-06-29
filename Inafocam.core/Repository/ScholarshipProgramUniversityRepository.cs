@@ -50,12 +50,12 @@ namespace Inafocam.core.Repository
         {
             if(model.ScholarshipProgramUniversityId != 0)
             {
-                _context.Add(model);
-            
+                _context.ScholarshipProgramUniversity.Update(model);
             }
             else
             {
-                _context.ScholarshipProgramUniversity.Update(model);
+              
+                _context.Add(model);
             }
 
             _context.SaveChanges();

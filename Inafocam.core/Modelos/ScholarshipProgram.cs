@@ -19,6 +19,13 @@ namespace Inafocam.core.Modelos
 
         public virtual ScholarshipLevel ScholarshipLevel { get; set; }
         public virtual Status Status { get; set; }
+
+
+
+
+        /// <summary>
+        /// This virtual property contains a list of objects type ScholarshipProgramUniversity
+        /// </summary>
         public virtual ICollection<ScholarshipProgramUniversity> ScholarshipProgramUniversity { get; set; }
     }
 }

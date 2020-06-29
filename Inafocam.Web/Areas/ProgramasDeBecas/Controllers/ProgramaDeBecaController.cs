@@ -9,6 +9,7 @@ using Inafocam.core.Utilidades;
 using Inafocam.Web.Areas.ProgramasDeBecas.Modelos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
 {
@@ -97,13 +98,24 @@ namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
                 StatusId = model.StatusId,
                 ScholarshipLevel = model.ScholarshipLevel,
                 Status = model.Status,
+                //ScholarshipProgramUniversit = model.ScholarshipProgramUniversity
                 //Status = model.Status,
                 //ScholarshipProgramUniversity = model.ScholarshipProgramUniversityList,
             };
-            //var data = CopyPropierties.Convert<ScholarshipProgramModel, ScholarshipProgram>(model);
+
+
+            var ScholarshipProgramUniversity = model.ScholarshipProgramUniversity;
+            
+
 
             try
             {
+                if (ScholarshipProgramUniversity != null)
+                {
+                    ScholarshipProgramUniversity.ScholarshipProgramId = model.ScholarshipProgramId;
+                    _scholarshipProgramUniversity.Save(ScholarshipProgramUniversity);
+                }
+
                 _scholarshipProgram.GuardarScholarshipProgram(scholarshipProgramModel);
 
             }
@@ -121,5 +133,14 @@ namespace Inafocam.Web.Areas.ProgramasDeBeca.Controllers
             var ScholarshipProgramList = _scholarshipProgram.GetAll.ToList();
             return View("Index",ScholarshipProgramList);
         }
+
+        //[HttpPost]
+        //public IActionResult AgregarConvocatoria(ScholarshipProgramModel model)
+        //{
+
+          
+
+        //    return RedirectToAction("Editar", new { id =  });
+        //}
     }
 }

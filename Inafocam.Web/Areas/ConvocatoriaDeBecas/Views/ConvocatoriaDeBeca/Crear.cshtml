@@ -61,7 +61,7 @@
 
                         @*<i class="material-icons prefix">contacts</i>*@
 
-                        <input value="llll" id="codigo" type="text" class="validat" disabled style="font-weight: bold;">
+                        <input asp-for="ScholarshipProgramUniversityId" id="codigo" type="text" class="validat" disabled style="font-weight: bold;">
 
                         <label>Convocatoria Id</label>
 
@@ -148,20 +148,27 @@
 
 
                     <div class="input-field col s12 m6 l4">
-                        <input asp-for="ScatProgramCode" id="codigodescat" type="text" class="validate">
+                        <input asp-for="ContractNumber" id="codigodescat" type="text" class="validate">
                         <label for="codigodescat">Codigo de SCAT</label>
                         <span class="red-text validationDisplay"></span>
-                    </div>
 
 
 
-
-
-                    <div class="input-field col s12 m6 l4">
-                        <input  id="nocontrato" type="text" class="validate">
-                        <label asp-for="ContractNumber" for="nocontrato">No. Contrato</label>
+                    </div>  <div class="input-field col s12 m6 l4">
+                        <input asp-for="ContractNumber" id="nocontrato" type="text" class="validate">
+                        <label for="nocontrato">No. Contrato</label>
                         <span class="red-text validationDisplay"></span>
                     </div>
+
+
+
+
+
+                    @*<div class="input-field col s12 m6 l4">
+                        <input  id="nocontrato" type="text" class="validate">
+                        <label asp-for="@Model.ContractNumber" for="nocontrato">No. Contrato</label>
+                        <span class="red-text validationDisplay"></span>
+                    </div>*@
 
                     @*<div class="input-field col s12 m6 l4">
                         <div class="row">

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Inafocam.core.Modelos
 {
-    public partial class User
+    public partial class User  
     {
         public User()
         {

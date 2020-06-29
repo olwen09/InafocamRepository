@@ -54,11 +54,14 @@ namespace Andamios.Web
                options.UseMySQL(
                    Configuration.GetConnectionString("InafocamContext")));
 
-            //services.AddIdentity<Usuario, Role>()
-            //    .AddRoles<Role>()
-            //    .AddEntityFrameworkStores<AndamiosDominicanosContext>()
+            //services.AddIdentity<User, UserRole>()
+            //    //.AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<inafocam_tracingContext>()
             //    .AddDefaultTokenProviders();
             //services.AddScoped<IInventario, InventarioRepository>();
+
+
+
 
             //#if DEBUG
             //            //windows
@@ -282,6 +285,9 @@ namespace Andamios.Web
             services.AddScoped<ITeacherFileType, TeacherFileTypeRepository> ();
             services.AddScoped<IMatirialStatus, MatirialStatusRepository> ();
             services.AddScoped<INationality, NationalityRepository> ();
+            services.AddScoped<ISubjectMatter, SubjectMatterRepository> ();
+            services.AddScoped<IUser, UserRepository> ();
+            services.AddScoped<IUserRole, UserRoleRepository> ();
 
 
             #endregion

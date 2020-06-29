@@ -8,11 +8,11 @@
         <tr>
 
             <th>Convocatoria <br /> Id</th>
-            <th>Nivel</th>
             <th>Programa</th>
             <th>Universidad</th>
             <th>Periodo de Convocatoria</th>
             <th>Periodo de Progrma</th>
+            <th>Nivel</th>
             <th>Estado</th>
             <th>Acciones</th>
 
@@ -24,12 +24,12 @@
         {
         <tr>
             <td>@item.ScholarshipProgramUniversityId</td>
-            <td>@item.ScholarshipLevel.ScholarshipLevelName</td>
             <td>@item.ScholarshipProgram.ScholarshipProgramName</td>
             <td>@item.University.UniversityName</td>
             <td>@item.AnnouncementStartDate?.ToString("D", CultureInfo.GetCultureInfo("es")) - @item.AnnouncementEndDate?.ToString("D", CultureInfo.GetCultureInfo("es"))</td>
             <td>@item.StartDate?.ToString("D", CultureInfo.GetCultureInfo("es")) - @item.EndDate?.ToString("D", CultureInfo.GetCultureInfo("es"))</td>
-            <td>@item.Status.StatusName</td>
+            <td>@item.ScholarshipLevel?.ScholarshipLevelName</td>
+            <td>@item.Status?.StatusName</td>
             
             <td>
                 <a asp-area="ConvocatoriaDeBecas" asp-controller="ConvocatoriaDeBeca" asp-action="Editar" asp-route-id="@item.ScholarshipProgramUniversityId" class="tooltipped" data-position="top" data-tooltip="Editar">
